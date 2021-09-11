@@ -42,7 +42,7 @@ fi
 
 ## Choose between GCC and CLANG config (default is GCC)
 if [ -z ${_compiler+x} ]; then
-  _compiler=clang
+  _compiler=gcc
 fi
 
 ## Setting some security options
@@ -98,7 +98,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
         "0002-UKSM.patch::${_patches_url}/uksm-patches-v2/0001-UKSM-for-${_major}.patch"
         "0003-zstd.patch::${_patches_url}/zstd-patches-v2/0001-zstd-patches.patch"
-        "0004-btrfs.patch::${_patches_url}/btrfs-patches-v2/0001-btrfs-patches.patch"
+        # "0004-btrfs.patch::${_patches_url}/btrfs-patches-v2/0001-btrfs-patches.patch"
 )
 
 validpgpkeys=(
@@ -119,7 +119,7 @@ b2sums=('0047f5aaa3940dff97f4055ef544faafbbb5282128e6afe21d2f47d8dc8c395806a1701
         '21d13b890e7b80c924e18ae11f675d69a80adffbe75e37bebd003024e7299c582346b0df60b67c709eba9678bcf6dda7da852c9cf18d43804ddd8ee9388b9ea5'
         '8f6d6263f0e517b6e7a1809fc57e01cc4b13dd261f778041026ec510f48257d4f525c3cb0b0935e291293960c9191282f5765ca0af3d948838e8f865c7deafcc'
         '90b8306ff5b0207fe2c7bf068a03da36ba3f38d68b7ea5ae227000f3d44ef9093541655fe32412686ae23a3c75f795e0b0a4fb24976867ac3c93e4de53145d48'
-        '9b10d92896c4c913f420d6c715a6bb75bbed36730fbfd199fc8c06713aea3192627b9fe15926844845bdd687ac87700694186461386d1279bb59c3cfbada9df5'
+        # '9b10d92896c4c913f420d6c715a6bb75bbed36730fbfd199fc8c06713aea3192627b9fe15926844845bdd687ac87700694186461386d1279bb59c3cfbada9df5'
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
