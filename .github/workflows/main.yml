@@ -13,4 +13,4 @@ jobs:
           allowUpdates: true
           tag: "linux-xanmod-cacule-uksm-cjktty_for_arch"
           artifacts: "./*/*.zst"
-          token: ${{ secrets.SYNC }}
+          token: ${{ secrets.GITHUB_TOKEN }}
