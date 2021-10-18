@@ -8,7 +8,7 @@ jobs:
         uses: antman666/build-aur-action@master
         with:
           repo-name: linux-xanmod-cacule-uksm-cjktty
-      - uses: ncipollo/release-action@master
+      - uses: ncipollo/release-action@v1.8.6
         with:
           allowUpdates: true
           tag: "linux-xanmod-cacule-uksm-cjktty_for_arch"
