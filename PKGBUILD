@@ -21,7 +21,7 @@
 ##                                                 99 => AMD native
 ## Here chooses generic, if you want better performance, please install from AUR
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=0
+  _microarchitecture=98
 fi
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -29,7 +29,7 @@ fi
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
 ##                             y to enable  (stock default)
 if [ -z ${use_numa+x} ]; then
-  use_numa=y
+  use_numa=n
 fi
 
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
@@ -37,19 +37,19 @@ fi
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
 if [ -z ${use_tracers+x} ]; then
-  use_tracers=y
+  use_tracers=n
 fi
 
 ## Choose between GCC and CLANG config (default is GCC)
 if [ -z ${_compiler+x} ]; then
-  _compiler=clang
+  _compiler=gcc
 fi
 
 ## Setting some security options
 use_selinux=n
 use_tomoyo=n
 use_yama=n
-use_apparmor=
+use_apparmor=n
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -231,6 +231,10 @@ prepare() {
   scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
   scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 3
+  
+  msg2 "enable PSI"
+  scripts/config --enable CONFIG_PSI
+  scripts/config --disable CONFIG_PSI_DEFAULT_DISABLED
 
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
