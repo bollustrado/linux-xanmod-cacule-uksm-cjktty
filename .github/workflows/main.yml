@@ -5,12 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build linux-xanmod-cacule-uksm-cjktty for arch
-        uses: antman666/build-aur-action@mine
+        uses: antman666/build-aur-action@master
         with:
           repo-name: linux-xanmod-cacule-uksm-cjktty
       - uses: ncipollo/release-action@v1.8.6
         with:
           allowUpdates: true
-          tag: "linux-xanmod-cacule-uksm-cjktty_for_arch-clang"
+          tag: "linux-xanmod-cacule-uksm-cjktty_for_arch"
           artifacts: "./*/*.zst"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SYNC }}
